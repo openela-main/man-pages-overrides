@@ -1,0 +1,33 @@
+From 09804c9f4bd48d4bf2798abd218d58f9a1cb417c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Nikola=20Forr=C3=B3?= <nforro@redhat.com>
+Date: Thu, 30 Apr 2020 17:09:41 +0200
+Subject: [PATCH] xattr.7: add attr(1) and selinux(8) as relevant pages to SEE
+ ALSO
+
+---
+ man-pages/man7/xattr.7 | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/man-pages/man7/xattr.7 b/man-pages/man7/xattr.7
+index fa67ab8..9ea8859 100644
+--- a/man-pages/man7/xattr.7
++++ b/man-pages/man7/xattr.7
+@@ -189,12 +189,14 @@ This page was formerly named
+ .BR getfattr (1),
+ .BR setfattr (1),
+ .BR getxattr (2),
++.BR attr (1),
+ .BR ioctl_iflags (2),
+ .BR listxattr (2),
+ .BR removexattr (2),
+ .BR setxattr (2),
+ .BR acl (5),
+-.BR capabilities (7)
++.BR capabilities (7),
++.BR selinux (8)
+ .SH COLOPHON
+ This page is part of release 4.15 of the Linux
+ .I man-pages
+-- 
+2.26.2
+
