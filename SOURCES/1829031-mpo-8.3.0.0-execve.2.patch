@@ -1,0 +1,29 @@
+From 72e4973f03c65b416ceb8f57595eeb0180facb02 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Nikola=20Forr=C3=B3?= <nforro@redhat.com>
+Date: Thu, 30 Apr 2020 17:24:59 +0200
+Subject: [PATCH 2/2] execve.2: clarify signal sent to the process on late
+ failure
+
+---
+ man-pages/man2/execve.2 | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/man-pages/man2/execve.2 b/man-pages/man2/execve.2
+index 7aaa64b..6d86cc4 100644
+--- a/man-pages/man2/execve.2
++++ b/man-pages/man2/execve.2
+@@ -585,7 +585,10 @@ failure may occur past the point of no return:
+ the original executable image has been torn down,
+ but the new image could not be completely built.
+ In such cases, the kernel kills the process with a
+-.BR SIGKILL
++.\" commit 19d860a140beac48a1377f179e693abe86a9dac9
++.BR SIGSEGV
++.RB ( SIGKILL
++until Linux 3.17)
+ signal.
+ .\"
+ .SS Interpreter scripts
+-- 
+2.26.2
+

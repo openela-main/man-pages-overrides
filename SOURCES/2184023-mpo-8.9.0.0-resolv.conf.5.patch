@@ -1,0 +1,47 @@
+From ebd8a5bc9259cc7a95460ee835df50cef0c32aae Mon Sep 17 00:00:00 2001
+From: Lukas Javorsky <ljavorsk@redhat.com>
+Date: Wed, 12 Apr 2023 17:52:14 +0000
+Subject: [PATCH] resolv.conf.5: Add option no-aaaa to the resolv.conf manual
+ page
+
+---
+ man-pages/man5/resolv.conf.5 | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+diff --git a/man-pages/man5/resolv.conf.5 b/man-pages/man5/resolv.conf.5
+index 93c6b47..7c61783 100644
+--- a/man-pages/man5/resolv.conf.5
++++ b/man-pages/man5/resolv.conf.5
+@@ -189,6 +189,29 @@ which causes round-robin selection of name servers from among those listed.
+ This has the effect of spreading the query load among all listed servers,
+ rather than having all clients try the first listed server first every time.
+ .TP
++.B no\-aaaa
++.\" f282cdbe7f436c75864e5640a409a10485e9abb2
++Sets
++.B RES_NOAAAA
++in
++.IR _res.options ,
++which suppresses AAAA queries made by the stub resolver,
++including AAAA lookups triggered by NSS-based interfaces such as
++.BR getaddrinfo (3).
++Only DNS lookups are affected: IPv6 data in
++.BR hosts (5)
++is still used,
++.BR getaddrinfo (3)
++with
++.B AI_PASSIVE
++will stillproduce IPv6 addresses,
++and configured IPv6 name servers are still used.
++To produce correct Name Error (NXDOMAIN) results,
++AAAA queries are translated to A queries.
++This option is intended preliminary for diagnostic purposes,
++to rule out that AAAA DNS queries have adverse impact.
++It is incompatible with EDNS0 usage and DNSSEC validation by applications.
++.TP
+ .B no\-check\-names
+ .\" since glibc 2.2
+ Sets
+-- 
+2.39.2
+

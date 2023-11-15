@@ -1,0 +1,34 @@
+From 32cb6e3dcdcd26746653f5a4a3359c4b5a5a1789 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Nikola=20Forr=C3=B3?= <nforro@redhat.com>
+Date: Mon, 15 Jun 2020 14:23:35 +0200
+Subject: [PATCH] radvd.8: add nodaemon option
+
+---
+ radvd/man8/radvd.8 | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/radvd/man8/radvd.8 b/radvd/man8/radvd.8
+index 6a98b12..4c71247 100644
+--- a/radvd/man8/radvd.8
++++ b/radvd/man8/radvd.8
+@@ -23,6 +23,7 @@ radvd \- router advertisement daemon for IPv6
+ .BI "[ \-p " pidfile " ]"
+ .BI "[ \-m " logmethod " ]"
+ .BI "[ \-l " logfile " ]"
++.BI "[ \-n " nodaemon " ]"
+ .BI "[ \-f " facility " ]"
+ .BI "[ \-t " chrootdir " ]"
+ .BI "[ \-u " username " ]"
+@@ -57,6 +58,9 @@ Displays a short usage description and then aborts.
+ .BR "\-c" , " \-\-configtest"
+ Test configuration and do startup tests and then exit.
+ .TP
++.BR "\-n" , " \-\-nodaemon"
++Prevent the daemonizing.
++.TP
+ .BR "\-d " debuglevel, " \-\-debug " debuglevel
+ With this option you turn on debugging information. The debugging level is
+ an integer in the range from 1 to 5, from  quiet to very verbose. A
+-- 
+2.26.2
+
