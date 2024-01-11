@@ -2,7 +2,7 @@
 
 Summary: Complementary and updated manual pages
 Name: man-pages-overrides
-Version: 8.6.0.0
+Version: 8.9.0.0
 Release: 1%{?dist}
 # license is the same as for the man-pages package
 License: GPL+ and GPLv2+ and BSD and MIT and Copyright only and IEEE
@@ -19,6 +19,7 @@ Patch6: 1850065-mpo-8.3.0.2-sgdisk.8.patch
 Patch7: 1899552-mpo-8.5.0.0-statx.2.patch
 Patch8: 1928160-mpo-8.5.0.0-resolv.conf.5.patch
 Patch9: 1981853-mpo-8.5.0.1-tcp.7.patch
+Patch10: 2184023-mpo-8.9.0.0-resolv.conf.5.patch
 
 BuildArch: noarch
 
@@ -67,6 +68,11 @@ done
 %{_mandir}/overrides/
 
 %changelog
+* Wed Apr 12 2023 Lukas Javorsky <ljavorsk@redhat.com> - 8.9.0.0-1
+- Upload new tarball
+- resolv.conf.5: Add option no-aaaa
+  resolves: #2184023
+
 * Thu Feb 03 2022 Nikola Forró <nforro@redhat.com> - 8.6.0.0-1
 - Upload new tarball
 - rpc.3: remove the man page
