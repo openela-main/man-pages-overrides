@@ -1,0 +1,280 @@
+From f5546b84f888fe41d0b3288f237a7d7d5fa16a4d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Nikola=20Forr=C3=B3?= <nforro@redhat.com>
+Date: Wed, 18 Dec 2019 17:25:40 +0100
+Subject: [PATCH] jose-*.1: fix typographical errors
+
+---
+ jose/man1/jose-fmt.1     |  6 +++---
+ jose/man1/jose-jwe-enc.1 | 10 +++++-----
+ jose/man1/jose-jwk-exc.1 |  6 +++---
+ jose/man1/jose-jwk-gen.1 | 20 ++++++++++----------
+ jose/man1/jose-jwk-pub.1 |  4 ++--
+ jose/man1/jose-jwk-thp.1 |  4 ++--
+ jose/man1/jose-jwk-use.1 |  4 ++--
+ jose/man1/jose-jws-sig.1 |  8 ++++----
+ 8 files changed, 31 insertions(+), 31 deletions(-)
+
+diff --git a/jose/man1/jose-fmt.1 b/jose/man1/jose-fmt.1
+index 8e1b042..a423a99 100644
+--- a/jose/man1/jose-fmt.1
++++ b/jose/man1/jose-fmt.1
+@@ -1,7 +1,7 @@
+ .\" generated with Ronn/v0.7.3
+ .\" http://github.com/rtomayko/ronn/tree/0.7.3
+ .
+-.TH "JOSE\-FMT" "1" "June 2017" "" ""
++.TH "JOSE\-FMT" "1" "August 2019" "" ""
+ .
+ .SH "NAME"
+ \fBjose\-fmt\fR \- Converts JSON between serialization formats
+@@ -237,7 +237,7 @@ Change the algorithm in a JWK:
+ .
+ .nf
+ 
+-$ echo "$jwk" | jose fmt \-j\- \-j \'"A128GCM"\' \-s alg \-Uo\-
++$ echo "$jwk" | jose fmt \-j\- \-j \(aq"A128GCM"\(aq \-s alg \-Uo\-
+ {"kty":"oct","alg":"A128GCM",\.\.\.}
+ .
+ .fi
+@@ -251,7 +251,7 @@ Build a JWE template:
+ .
+ .nf
+ 
+-$ jose fmt \-j \'{}\' \-cs unprotected \-q A128KW \-s alg \-UUo\-
++$ jose fmt \-j \(aq{}\(aq \-cs unprotected \-q A128KW \-s alg \-UUo\-
+ {"unprotected":{"alg":"A128KW"}}
+ .
+ .fi
+diff --git a/jose/man1/jose-jwe-enc.1 b/jose/man1/jose-jwe-enc.1
+index ad4f49b..7cbed11 100644
+--- a/jose/man1/jose-jwe-enc.1
++++ b/jose/man1/jose-jwe-enc.1
+@@ -1,7 +1,7 @@
+ .\" generated with Ronn/v0.7.3
+ .\" http://github.com/rtomayko/ronn/tree/0.7.3
+ .
+-.TH "JOSE\-JWE\-ENC" "1" "May 2017" "" ""
++.TH "JOSE\-JWE\-ENC" "1" "August 2019" "" ""
+ .
+ .SH "NAME"
+ \fBjose\-jwe\-enc\fR \- Encrypts plaintext using one or more JWK/password
+@@ -66,7 +66,7 @@ Read JWK(Set) from FILE
+ Read JWK(Set) from standard input
+ .
+ .TP
+-\fB\-p\fR, `\-\-password
++\fB\-p\fR, \fB\-\-password\fR
+ Prompt for an encryption password
+ .
+ .TP
+@@ -96,7 +96,7 @@ Encrypt data with a symmetric key using JWE JSON Serialization:
+ .
+ .nf
+ 
+-$ jose jwk gen \-i \'{"alg":"A128GCM"}\' \-o key\.jwk
++$ jose jwk gen \-i \(aq{"alg":"A128GCM"}\(aq \-o key\.jwk
+ $ jose jwe enc \-I msg\.txt \-k key\.jwk \-o msg\.jwe
+ .
+ .fi
+@@ -125,14 +125,14 @@ Compress plaintext before encryption:
+ .
+ .nf
+ 
+-$ jose jwe enc \-i \'{"protected":{"zip":"DEF"}}\' \.\.\.
++$ jose jwe enc \-i \(aq{"protected":{"zip":"DEF"}}\(aq \.\.\.
+ .
+ .fi
+ .
+ .IP "" 0
+ .
+ .P
+-Encrypt with two keys and two passwords: $ jose jwk gen \-i \'{"alg":"ECDH\-ES+A128KW"}\' \-o ec\.jwk $ jose jwk gen \-i \'{"alg":"RSA1_5"}\' \-o rsa\.jwk $ jose jwe enc \-I msg\.txt \-p \-k ec\.jwk \-p \-k rsa\.jwk \-o msg\.jwe Please enter a password: Please re\-enter the previous password: Please enter a password: Please re\-enter the previous password:
++Encrypt with two keys and two passwords: $ jose jwk gen \-i \(aq{"alg":"ECDH\-ES+A128KW"}\(aq \-o ec\.jwk $ jose jwk gen \-i \(aq{"alg":"RSA1_5"}\(aq \-o rsa\.jwk $ jose jwe enc \-I msg\.txt \-p \-k ec\.jwk \-p \-k rsa\.jwk \-o msg\.jwe Please enter a password: Please re\-enter the previous password: Please enter a password: Please re\-enter the previous password:
+ .
+ .SH "AUTHOR"
+ Nathaniel McCallum <npmccallum@redhat\.com>
+diff --git a/jose/man1/jose-jwk-exc.1 b/jose/man1/jose-jwk-exc.1
+index adf25fa..39a1e22 100644
+--- a/jose/man1/jose-jwk-exc.1
++++ b/jose/man1/jose-jwk-exc.1
+@@ -1,7 +1,7 @@
+ .\" generated with Ronn/v0.7.3
+ .\" http://github.com/rtomayko/ronn/tree/0.7.3
+ .
+-.TH "JOSE\-JWK\-EXC" "1" "June 2017" "" ""
++.TH "JOSE\-JWK\-EXC" "1" "July 2019" "" ""
+ .
+ .SH "NAME"
+ \fBjose\-jwk\-exc\fR \- Performs a key exchange using the two input keys
+@@ -77,8 +77,8 @@ Perform a key exchange:
+ .
+ .nf
+ 
+-$ jose jwk gen \-i \'{"alg":"ECDH"}\' \-o local\.jwk
+-$ jose jwk gen \-i \'{"alg":"ECDH"}\' | jose jwk pub \-i\- \-o remote\.jwk
++$ jose jwk gen \-i \(aq{"alg":"ECDH"}\(aq \-o local\.jwk
++$ jose jwk gen \-i \(aq{"alg":"ECDH"}\(aq | jose jwk pub \-i\- \-o remote\.jwk
+ $ jose jwk exc \-l local\.jwk \-r remote\.jwk \-o exchanged\.jwk
+ .
+ .fi
+diff --git a/jose/man1/jose-jwk-gen.1 b/jose/man1/jose-jwk-gen.1
+index ac0d9e7..a422a01 100644
+--- a/jose/man1/jose-jwk-gen.1
++++ b/jose/man1/jose-jwk-gen.1
+@@ -1,7 +1,7 @@
+ .\" generated with Ronn/v0.7.3
+ .\" http://github.com/rtomayko/ronn/tree/0.7.3
+ .
+-.TH "JOSE\-JWK\-GEN" "1" "June 2017" "" ""
++.TH "JOSE\-JWK\-GEN" "1" "July 2019" "" ""
+ .
+ .SH "NAME"
+ \fBjose\-jwk\-gen\fR \- Creates a random JWK for each input JWK template
+@@ -51,9 +51,9 @@ Generate three keys, each targeting a different algorithm:
+ .
+ .nf
+ 
+-$ jose jwk gen \-i \'{"alg":"HS256"}\' \-o oct\.jwk
+-$ jose jwk gen \-i \'{"alg":"RS256"}\' \-o rsa\.jwk
+-$ jose jwk gen \-i \'{"alg":"ES256"}\' \-o ec\.jwk
++$ jose jwk gen \-i \(aq{"alg":"HS256"}\(aq \-o oct\.jwk
++$ jose jwk gen \-i \(aq{"alg":"RS256"}\(aq \-o rsa\.jwk
++$ jose jwk gen \-i \(aq{"alg":"ES256"}\(aq \-o ec\.jwk
+ .
+ .fi
+ .
+@@ -66,9 +66,9 @@ Generate three keys using key parameters rather than algorithms:
+ .
+ .nf
+ 
+-$ jose jwk gen \-i \'{"kty":"oct","bytes":32}\' \-o oct\.jwk
+-$ jose jwk gen \-i \'{"kty":"RSA","bits":4096}\' \-o rsa\.jwk
+-$ jose jwk gen \-i \'{"kty":"EC","crv":"P\-256"}\' \-o ec\.jwk
++$ jose jwk gen \-i \(aq{"kty":"oct","bytes":32}\(aq \-o oct\.jwk
++$ jose jwk gen \-i \(aq{"kty":"RSA","bits":4096}\(aq \-o rsa\.jwk
++$ jose jwk gen \-i \(aq{"kty":"EC","crv":"P\-256"}\(aq \-o ec\.jwk
+ .
+ .fi
+ .
+@@ -82,7 +82,7 @@ Create multiple keys at once using a JWKSet template:
+ .nf
+ 
+ $ jose jwk gen \e
+-  \-i \'{"keys":[{"alg":"HS256"},{"alg":"ES256"}]}\' \e
++  \-i \(aq{"keys":[{"alg":"HS256"},{"alg":"ES256"}]}\(aq \e
+   \-o keys\.jwkset
+ .
+ .fi
+@@ -97,8 +97,8 @@ Create multiple keys at once using multiple JWK templates:
+ .nf
+ 
+ $ jose jwk gen \e
+-  \-i \'{"alg":"HS256"}\' \e
+-  \-i \'{"alg":"ES256"}\' \e
++  \-i \(aq{"alg":"HS256"}\(aq \e
++  \-i \(aq{"alg":"ES256"}\(aq \e
+   \-o keys\.jwkset
+ .
+ .fi
+diff --git a/jose/man1/jose-jwk-pub.1 b/jose/man1/jose-jwk-pub.1
+index 108256c..c0332c9 100644
+--- a/jose/man1/jose-jwk-pub.1
++++ b/jose/man1/jose-jwk-pub.1
+@@ -1,7 +1,7 @@
+ .\" generated with Ronn/v0.7.3
+ .\" http://github.com/rtomayko/ronn/tree/0.7.3
+ .
+-.TH "JOSE\-JWK\-PUB" "1" "June 2017" "" ""
++.TH "JOSE\-JWK\-PUB" "1" "July 2019" "" ""
+ .
+ .SH "NAME"
+ \fBjose\-jwk\-pub\fR \- Cleans private keys from a JWK
+@@ -48,7 +48,7 @@ Clean private key material from a JWK:
+ .
+ .nf
+ 
+-$ jose jwk gen \-i \'{"alg":"ES256"}\' \-o prv\.jwk
++$ jose jwk gen \-i \(aq{"alg":"ES256"}\(aq \-o prv\.jwk
+ $ cat prv\.jwk
+ {"alg":"ES256","crv":"P\-256","key_ops":["sign","verify"],"kty":"EC", \.\.\.}
+ $ jose jwk pub \-i prv\.jwk \-o pub\.jwk
+diff --git a/jose/man1/jose-jwk-thp.1 b/jose/man1/jose-jwk-thp.1
+index 4b037cf..4b0c4f6 100644
+--- a/jose/man1/jose-jwk-thp.1
++++ b/jose/man1/jose-jwk-thp.1
+@@ -1,7 +1,7 @@
+ .\" generated with Ronn/v0.7.3
+ .\" http://github.com/rtomayko/ronn/tree/0.7.3
+ .
+-.TH "JOSE\-JWK\-THP" "1" "June 2017" "" ""
++.TH "JOSE\-JWK\-THP" "1" "July 2019" "" ""
+ .
+ .SH "NAME"
+ \fBjose\-jwk\-thp\fR \- Calculates the JWK thumbprint
+@@ -53,7 +53,7 @@ Calculate the S1 thumbprint of a newly generated key:
+ .
+ .nf
+ 
+-$ jose jwk gen \-i \'{"alg":"ES256"}\' \-a S1 | jose jwk thp \-i\-
++$ jose jwk gen \-i \(aq{"alg":"ES256"}\(aq \-a S1 | jose jwk thp \-i\-
+ BzmSH6W8a8LlbQ1mD0iBJdYj4x4
+ .
+ .fi
+diff --git a/jose/man1/jose-jwk-use.1 b/jose/man1/jose-jwk-use.1
+index a9ef2ef..adf1540 100644
+--- a/jose/man1/jose-jwk-use.1
++++ b/jose/man1/jose-jwk-use.1
+@@ -1,7 +1,7 @@
+ .\" generated with Ronn/v0.7.3
+ .\" http://github.com/rtomayko/ronn/tree/0.7.3
+ .
+-.TH "JOSE\-JWK\-USE" "1" "June 2017" "" ""
++.TH "JOSE\-JWK\-USE" "1" "July 2019" "" ""
+ .
+ .SH "NAME"
+ \fBjose\-jwk\-use\fR \- Validates a key for the specified use(s)
+@@ -91,7 +91,7 @@ Examples of both success and failure from a private and public key:
+ .
+ .nf
+ 
+-$ jose jwk gen \-i \'{"alg":"ES256"}\' \-o prv\.jwk
++$ jose jwk gen \-i \(aq{"alg":"ES256"}\(aq \-o prv\.jwk
+ $ jose jwk pub \-i prv\.jwk \-o pub\.jwk
+ $ jose jwk use \-i prv\.jwk \-u sign
+ $ echo $?
+diff --git a/jose/man1/jose-jws-sig.1 b/jose/man1/jose-jws-sig.1
+index ee827a3..336ead8 100644
+--- a/jose/man1/jose-jws-sig.1
++++ b/jose/man1/jose-jws-sig.1
+@@ -1,7 +1,7 @@
+ .\" generated with Ronn/v0.7.3
+ .\" http://github.com/rtomayko/ronn/tree/0.7.3
+ .
+-.TH "JOSE\-JWS\-SIG" "1" "June 2017" "" ""
++.TH "JOSE\-JWS\-SIG" "1" "July 2019" "" ""
+ .
+ .SH "NAME"
+ \fBjose\-jws\-sig\fR \- Signs a payload using one or more JWKs
+@@ -99,7 +99,7 @@ Sign data with a symmetric key using JWE JSON Serialization:
+ .
+ .nf
+ 
+-$ jose jwk gen \-i \'{"alg":"HS256"}\' \-o key\.jwk
++$ jose jwk gen \-i \(aq{"alg":"HS256"}\(aq \-o key\.jwk
+ $ jose jws sig \-I msg\.txt \-k key\.jwk \-o msg\.jws
+ .
+ .fi
+@@ -126,8 +126,8 @@ Sign with two keys:
+ .
+ .nf
+ 
+-$ jose jwk gen \-i \'{"alg":"ES256"}\' \-o ec\.jwk
+-$ jose jwk gen \-i \'{"alg":"RS256"}\' \-o rsa\.jwk
++$ jose jwk gen \-i \(aq{"alg":"ES256"}\(aq \-o ec\.jwk
++$ jose jwk gen \-i \(aq{"alg":"RS256"}\(aq \-o rsa\.jwk
+ $ jose jws sig \-I msg\.txt \-k ec\.jwk \-k rsa\.jwk \-o msg\.jws
+ .
+ .fi
+-- 
+2.21.0
+

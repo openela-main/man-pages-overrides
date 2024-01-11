@@ -1,0 +1,46 @@
+From 077bf992f0deb7d9bb17568726be33ca4209e89c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Nikola=20Forr=C3=B3?= <nforro@redhat.com>
+Date: Fri, 13 Dec 2019 14:21:57 +0100
+Subject: [PATCH] copy_file_range.2: update ERRORS
+
+---
+ man-pages/man2/copy_file_range.2 | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/man-pages/man2/copy_file_range.2 b/man-pages/man2/copy_file_range.2
+index 35c0967..f25ea95 100644
+--- a/man-pages/man2/copy_file_range.2
++++ b/man-pages/man2/copy_file_range.2
+@@ -78,7 +78,7 @@ is adjusted appropriately.
+ The
+ .I flags
+ argument is provided to allow for future extensions
+-and currently must be to 0.
++and currently must be set to 0.
+ .SH RETURN VALUE
+ Upon successful completion,
+ .BR copy_file_range ()
+@@ -109,7 +109,11 @@ maximum file size or the process's file size limit,
+ or to write at a position past the maximum allowed offset.
+ .TP
+ .B EINVAL
+-Requested range extends beyond the end of the source file; or the
++Requested range extends beyond the end of the source file; or either
++.I fd_in
++or
++.I fd_out
++is not a regular file; or the
+ .I flags
+ argument is not 0.
+ .TP
+@@ -117,6 +121,7 @@ argument is not 0.
+ A low-level I/O error occurred while copying.
+ .TP
+ .B EISDIR
++Either
+ .I fd_in
+ or
+ .I fd_out
+-- 
+2.21.0
+

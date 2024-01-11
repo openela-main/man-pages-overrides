@@ -1,0 +1,53 @@
+From d06094d4469258a722c94f8bb5bc25b5c9711718 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Nikola=20Forr=C3=B3?= <nforro@redhat.com>
+Date: Fri, 9 Jul 2021 18:34:34 +0200
+Subject: [PATCH 1/2] statx.2: add STATX_ATTR_DAX
+
+---
+ man-pages/man2/statx.2 | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
+
+diff --git a/man-pages/man2/statx.2 b/man-pages/man2/statx.2
+index bb04455..686edc8 100644
+--- a/man-pages/man2/statx.2
++++ b/man-pages/man2/statx.2
+@@ -462,6 +462,36 @@ See
+ .TP
+ .B STATX_ATTR_ENCRYPTED
+ A key is required for the file to be encrypted by the filesystem.
++.TP
++.BR STATX_ATTR_DAX " (since Linux 5.8)"
++The file is in the DAX (cpu direct access) state.
++DAX state attempts to
++minimize software cache effects for both I/O and memory mappings of this file.
++It requires a file system which has been configured to support DAX.
++.IP
++DAX generally assumes all accesses are via CPU load / store instructions
++which can minimize overhead for small accesses,
++but may adversely affect CPU utilization for large transfers.
++.IP
++File I/O is done directly to/from user-space buffers and memory mapped I/O may
++be performed with direct memory mappings that bypass the kernel page cache.
++.IP
++While the DAX property tends to result in data being transferred synchronously,
++it does not give the same guarantees as the
++.B O_SYNC
++flag (see
++.BR open (2)),
++where data and the necessary metadata are transferred together.
++.IP
++A DAX file may support being mapped with the
++.B MAP_SYNC
++flag, which enables a
++program to use CPU cache flush instructions to persist CPU store operations
++without an explicit
++.BR fsync (2).
++See
++.BR mmap (2)
++for more information.
+ .SH RETURN VALUE
+ On success, zero is returned.
+ On error, \-1 is returned, and
+-- 
+2.31.1
+
